@@ -1,0 +1,4 @@
+planet_name,host_name,equilibrium_temperature_k,planet_radius_earth,planet_mass_earth,orbital_period_days,stellar_temperature_k,source_url,retrieved_date,notes
+TRAPPIST-1 g,TRAPPIST-1,197.3,1.129,1.321,12.352446,,https://exoplanetarchive.ipac.caltech.edu/overview/TRAPPIST-1,2026-09-26,"Values selected from NASA Exoplanet Archive overview; the archive shows multiple literature solutions."
+Kepler-22 b,Kepler-22,279,2.1,,289.863876,5596,https://exoplanetarchive.ipac.caltech.edu/overview/Kepler-22,2026-09-26,"Mass omitted because the displayed solution is an upper limit; V1 avoids treating a limit as an exact value."
+HD 209458 b,HD 209458,1450,15.58,232,3.52474859,6117,https://exoplanetarchive.ipac.caltech.edu/overview/HD_209458,2026-09-26,"Representative values selected from NASA Exoplanet Archive overview; multiple literature solutions are displayed by the archive."

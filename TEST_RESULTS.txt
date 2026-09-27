@@ -1,0 +1,25 @@
+Spreadsheet runtime warmup failed during python startup
+Traceback (most recent call last):
+  File "/tmp/tmp.L2TH2Y5coc/artifact_tool_v2-2.8.22/artifact_tool/patches/warm_spreadsheet_runtime_on_startup.py", line 26, in warm_spreadsheet_runtime_on_startup
+  File "/tmp/tmp.L2TH2Y5coc/artifact_tool_v2-2.8.22/artifact_tool/spreadsheet_warmup.py", line 785, in warm_spreadsheet_runtime
+  File "/tmp/tmp.L2TH2Y5coc/artifact_tool_v2-2.8.22/artifact_tool/spreadsheet_warmup.py", line 720, in _warm_feature_flows
+  File "/tmp/tmp.L2TH2Y5coc/artifact_tool_v2-2.8.22/artifact_tool/spreadsheet_warmup.py", line 704, in _warm_collaboration_flows
+  File "/tmp/tmp.L2TH2Y5coc/artifact_tool_v2-2.8.22/artifact_tool/generated/interface/models.py", line 32317, in hydrate_crdt_from_proto
+  File "/tmp/tmp.L2TH2Y5coc/artifact_tool_v2-2.8.22/artifact_tool/rpc/remote.py", line 749, in __call__
+  File "/tmp/tmp.L2TH2Y5coc/artifact_tool_v2-2.8.22/artifact_tool/rpc/client.py", line 150, in call
+artifact_tool.rpc.client.RemoteError: hydrateCrdtFromProto requires an empty collaborative document.
+test_comparisons (test_engine.CompareTests.test_comparisons) ... ok
+test_inferred_facts (test_engine.ForwardChainTests.test_inferred_facts) ... ok
+test_manual_chain (test_engine.ForwardChainTests.test_manual_chain) ... ok
+test_nasa_hot_giant_chain (test_engine.ForwardChainTests.test_nasa_hot_giant_chain) ... ok
+test_nasa_missing_temperature_does_not_invent_thermal_regime (test_engine.ForwardChainTests.test_nasa_missing_temperature_does_not_invent_thermal_regime) ... ok
+test_find_planet (test_nasa_data.NASADataTests.test_find_planet) ... ok
+test_missing_mass_remains_missing (test_nasa_data.NASADataTests.test_missing_mass_remains_missing) ... ok
+test_normalization (test_nasa_data.NASADataTests.test_normalization) ... ok
+test_numeric_parsing (test_nasa_data.NASADataTests.test_numeric_parsing) ... ok
+test_snapshot_loads (test_nasa_data.NASADataTests.test_snapshot_loads) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.001s
+
+OK

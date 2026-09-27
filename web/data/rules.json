@@ -1,0 +1,449 @@
+{
+  "metadata": {
+    "title": "Rule-Based Astrochemical Knowledge System",
+    "version": "1.0",
+    "notes": [
+      "Manual astrochemical rules are educational qualitative rules.",
+      "NASA rules classify only broad environmental regimes from archive parameters.",
+      "No NASA rule claims that a molecule definitely exists."
+    ]
+  },
+  "rules": [
+    {
+      "id": "M01",
+      "mode": "manual",
+      "title": "Cold dense grain-surface regime",
+      "conditions": [
+        {
+          "fact": "temperature_k",
+          "operator": "<=",
+          "value": 20,
+          "input_fact": true
+        },
+        {
+          "fact": "density_cm3",
+          "operator": ">=",
+          "value": 10000,
+          "input_fact": true
+        },
+        {
+          "fact": "dust_grains_present",
+          "operator": "==",
+          "value": true,
+          "input_fact": true
+        }
+      ],
+      "conclusion": {
+        "fact": "grain_surface_chemistry_favored",
+        "value": true
+      },
+      "explanation": "Cold, dense conditions with dust are compatible with an environment where adsorption and grain-surface chemistry can be important.",
+      "source_note": "Educational qualitative rule; thresholds are project bins and should not be treated as universal physical boundaries."
+    },
+    {
+      "id": "M02",
+      "mode": "manual",
+      "title": "Freeze-out is plausible",
+      "conditions": [
+        {
+          "fact": "grain_surface_chemistry_favored",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "fact": "molecular_freezeout_plausible",
+        "value": true
+      },
+      "explanation": "Cold grain-surface conditions make adsorption/freeze-out of some gas-phase species plausible.",
+      "source_note": "Qualitative educational inference."
+    },
+    {
+      "id": "M03",
+      "mode": "manual",
+      "title": "CO surface hydrogenation pathway",
+      "conditions": [
+        {
+          "fact": "grain_surface_chemistry_favored",
+          "operator": "==",
+          "value": true
+        },
+        {
+          "fact": "co_freezeout_evidence",
+          "operator": "==",
+          "value": true,
+          "input_fact": true
+        }
+      ],
+      "conclusion": {
+        "fact": "co_surface_hydrogenation_favored",
+        "value": true
+      },
+      "explanation": "If CO is present on cold grain surfaces, successive hydrogen-addition chemistry becomes a plausible pathway.",
+      "source_note": "Qualitative starter rule; final research use would require literature-calibrated physical conditions."
+    },
+    {
+      "id": "M04",
+      "mode": "manual",
+      "title": "Methanol ice formation is plausible",
+      "conditions": [
+        {
+          "fact": "co_surface_hydrogenation_favored",
+          "operator": "==",
+          "value": true
+        }
+      ],
+      "conclusion": {
+        "fact": "methanol_ice_formation_plausible",
+        "value": true
+      },
+      "explanation": "CO hydrogenation on grains provides a known qualitative pathway toward methanol ice; this is a plausibility inference, not an abundance prediction.",
+      "source_note": "Educational qualitative inference."
+    },
+    {
+      "id": "M05",
+      "mode": "manual",
+      "title": "Warm grain desorption regime",
+      "conditions": [
+        {
+          "fact": "temperature_k",
+          "operator": ">=",
+          "value": 100,
+          "input_fact": true
+        },
+        {
+          "fact": "dust_grains_present",
+          "operator": "==",
+          "value": true,
+          "input_fact": true
+        }
+      ],
+      "conclusion": {
+        "fact": "thermal_desorption_significant",
+        "value": true
+      },
+      "explanation": "Warmer dust can release some icy material to the gas phase; exact desorption temperatures are species-dependent.",
+      "source_note": "100 K is an educational warm-region project threshold, not a universal desorption temperature."
+    },
+    {
+      "id": "M06",
+      "mode": "manual",
+      "title": "UV-driven chemistry",
+      "conditions": [
+        {
+          "fact": "uv_field",
+          "operator": "==",
+          "value": "high",
+          "input_fact": true
+        }
+      ],
+      "conclusion": {
+        "fact": "photochemistry_important",
+        "value": true
+      },
+      "explanation": "A strong ultraviolet field can make photodissociation and photochemical processing important.",
+      "source_note": "Qualitative educational rule."
+    },
+    {
+      "id": "M07",
+      "mode": "manual",
+      "title": "Cosmic-ray ionization chemistry",
+      "conditions": [
+        {
+          "fact": "cosmic_ray_activity",
+          "operator": "in",
+          "value": [
+            "normal",
+            "elevated"
+          ],
+          "input_fact": true
+        },
+        {
+          "fact": "density_cm3",
+          "operator": ">=",
+          "value": 10000,
+          "input_fact": true
+        }
+      ],
+      "conclusion": {
+        "fact": "ion_molecule_chemistry_active",
+        "value": true
+      },
+      "explanation": "Cosmic-ray ionization can initiate ion-molecule reaction chains in dense, shielded gas.",
+      "source_note": "Qualitative educational rule."
+    },
+    {
+      "id": "M08",
+      "mode": "manual",
+      "title": "Cold dense shielded profile",
+      "conditions": [
+        {
+          "fact": "temperature_k",
+          "operator": "<=",
+          "value": 20,
+          "input_fact": true
+        },
+        {
+          "fact": "density_cm3",
+          "operator": ">=",
+          "value": 10000,
+          "input_fact": true
+        },
+        {
+          "fact": "uv_field",
+          "operator": "==",
+          "value": "low",
+          "input_fact": true
+        }
+      ],
+      "conclusion": {
+        "fact": "environment_profile",
+        "value": "cold_dense_shielded"
+      },
+      "explanation": "The selected project-level conditions resemble a cold, dense, UV-shielded environment.",
+      "source_note": "Project profile, not a formal astronomical classification standard."
+    },
+    {
+      "id": "M09",
+      "mode": "manual",
+      "title": "Warm dense profile",
+      "conditions": [
+        {
+          "fact": "temperature_k",
+          "operator": ">=",
+          "value": 100,
+          "input_fact": true
+        },
+        {
+          "fact": "density_cm3",
+          "operator": ">=",
+          "value": 100000,
+          "input_fact": true
+        }
+      ],
+      "conclusion": {
+        "fact": "environment_profile",
+        "value": "warm_dense"
+      },
+      "explanation": "The selected project-level conditions resemble a warm, dense environment.",
+      "source_note": "Project profile, not a formal astronomical classification standard."
+    },
+    {
+      "id": "N01",
+      "mode": "nasa",
+      "title": "Cool equilibrium-temperature bin",
+      "conditions": [
+        {
+          "fact": "planet_eq_temp_k",
+          "operator": "<",
+          "value": 250,
+          "input_fact": true
+        }
+      ],
+      "conclusion": {
+        "fact": "planet_thermal_regime",
+        "value": "cool"
+      },
+      "explanation": "For this PBL, equilibrium temperatures below 250 K are grouped into a simple 'cool' demonstration bin.",
+      "source_note": "Project bin for explainable reasoning; not a formal universal exoplanet taxonomy."
+    },
+    {
+      "id": "N02",
+      "mode": "nasa",
+      "title": "Moderate equilibrium-temperature bin",
+      "conditions": [
+        {
+          "fact": "planet_eq_temp_k",
+          "operator": ">=",
+          "value": 250,
+          "input_fact": true
+        },
+        {
+          "fact": "planet_eq_temp_k",
+          "operator": "<",
+          "value": 500,
+          "input_fact": true
+        }
+      ],
+      "conclusion": {
+        "fact": "planet_thermal_regime",
+        "value": "moderate"
+      },
+      "explanation": "For this PBL, 250-500 K is treated as a moderate equilibrium-temperature demonstration bin.",
+      "source_note": "Project bin; does not imply habitability."
+    },
+    {
+      "id": "N03",
+      "mode": "nasa",
+      "title": "Hot equilibrium-temperature bin",
+      "conditions": [
+        {
+          "fact": "planet_eq_temp_k",
+          "operator": ">=",
+          "value": 1000,
+          "input_fact": true
+        }
+      ],
+      "conclusion": {
+        "fact": "planet_thermal_regime",
+        "value": "hot"
+      },
+      "explanation": "For this PBL, equilibrium temperatures at or above 1000 K are grouped into a 'hot' demonstration bin.",
+      "source_note": "Project bin for transparent rule-based reasoning."
+    },
+    {
+      "id": "N04",
+      "mode": "nasa",
+      "title": "Near-Earth-size radius bin",
+      "conditions": [
+        {
+          "fact": "planet_radius_earth",
+          "operator": "<=",
+          "value": 1.5,
+          "input_fact": true
+        }
+      ],
+      "conclusion": {
+        "fact": "planet_size_regime",
+        "value": "near_earth_size"
+      },
+      "explanation": "The recorded radius falls in this PBL's small-planet demonstration bin.",
+      "source_note": "Project bin, not a definitive composition classification."
+    },
+    {
+      "id": "N05",
+      "mode": "nasa",
+      "title": "Intermediate-size radius bin",
+      "conditions": [
+        {
+          "fact": "planet_radius_earth",
+          "operator": ">",
+          "value": 1.5,
+          "input_fact": true
+        },
+        {
+          "fact": "planet_radius_earth",
+          "operator": "<=",
+          "value": 4.0,
+          "input_fact": true
+        }
+      ],
+      "conclusion": {
+        "fact": "planet_size_regime",
+        "value": "intermediate_size"
+      },
+      "explanation": "The recorded radius falls in this PBL's intermediate-size demonstration bin.",
+      "source_note": "Project bin; radius alone does not determine composition."
+    },
+    {
+      "id": "N06",
+      "mode": "nasa",
+      "title": "Giant-size radius bin",
+      "conditions": [
+        {
+          "fact": "planet_radius_earth",
+          "operator": ">=",
+          "value": 8.0,
+          "input_fact": true
+        }
+      ],
+      "conclusion": {
+        "fact": "planet_size_regime",
+        "value": "giant_size"
+      },
+      "explanation": "The recorded radius falls in this PBL's giant-planet demonstration bin.",
+      "source_note": "Project bin used for transparent rule chaining."
+    },
+    {
+      "id": "N07",
+      "mode": "nasa",
+      "title": "Cool small-planet environmental profile",
+      "conditions": [
+        {
+          "fact": "planet_thermal_regime",
+          "operator": "==",
+          "value": "cool"
+        },
+        {
+          "fact": "planet_size_regime",
+          "operator": "==",
+          "value": "near_earth_size"
+        }
+      ],
+      "conclusion": {
+        "fact": "nasa_environment_profile",
+        "value": "cool_near_earth_size"
+      },
+      "explanation": "The available archive parameters are compatible with a cool, near-Earth-size bulk environment.",
+      "source_note": "This does not establish atmospheric composition or habitability."
+    },
+    {
+      "id": "N08",
+      "mode": "nasa",
+      "title": "Moderate intermediate-size environmental profile",
+      "conditions": [
+        {
+          "fact": "planet_thermal_regime",
+          "operator": "==",
+          "value": "moderate"
+        },
+        {
+          "fact": "planet_size_regime",
+          "operator": "==",
+          "value": "intermediate_size"
+        }
+      ],
+      "conclusion": {
+        "fact": "nasa_environment_profile",
+        "value": "moderate_intermediate_size"
+      },
+      "explanation": "The archive values are compatible with a moderate-temperature, intermediate-size bulk environment.",
+      "source_note": "Bulk properties alone do not determine molecules."
+    },
+    {
+      "id": "N09",
+      "mode": "nasa",
+      "title": "Hot giant environmental profile",
+      "conditions": [
+        {
+          "fact": "planet_thermal_regime",
+          "operator": "==",
+          "value": "hot"
+        },
+        {
+          "fact": "planet_size_regime",
+          "operator": "==",
+          "value": "giant_size"
+        }
+      ],
+      "conclusion": {
+        "fact": "nasa_environment_profile",
+        "value": "hot_giant"
+      },
+      "explanation": "The archive values are compatible with a hot giant-planet bulk environment.",
+      "source_note": "Composition still requires atmospheric/spectroscopic evidence."
+    },
+    {
+      "id": "N10",
+      "mode": "nasa",
+      "title": "Composition requires spectroscopy",
+      "conditions": [
+        {
+          "fact": "planet_thermal_regime",
+          "operator": "in",
+          "value": [
+            "cool",
+            "moderate",
+            "hot"
+          ]
+        }
+      ],
+      "conclusion": {
+        "fact": "composition_inference_status",
+        "value": "not_determined_from_bulk_parameters"
+      },
+      "explanation": "Equilibrium temperature and bulk radius can describe an environment, but they do not prove which molecules are present.",
+      "source_note": "Scientific safeguard used by V1 to avoid overclaiming."
+    }
+  ]
+}

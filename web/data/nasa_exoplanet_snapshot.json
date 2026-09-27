@@ -1,0 +1,38 @@
+[
+  {
+    "planet_name": "TRAPPIST-1 g",
+    "host_name": "TRAPPIST-1",
+    "equilibrium_temperature_k": 197.3,
+    "planet_radius_earth": 1.129,
+    "planet_mass_earth": 1.321,
+    "orbital_period_days": 12.352446,
+    "stellar_temperature_k": null,
+    "source_url": "https://exoplanetarchive.ipac.caltech.edu/overview/TRAPPIST-1",
+    "retrieved_date": "2026-09-26",
+    "notes": "Values selected from NASA Exoplanet Archive overview; the archive shows multiple literature solutions."
+  },
+  {
+    "planet_name": "Kepler-22 b",
+    "host_name": "Kepler-22",
+    "equilibrium_temperature_k": 279.0,
+    "planet_radius_earth": 2.1,
+    "planet_mass_earth": null,
+    "orbital_period_days": 289.863876,
+    "stellar_temperature_k": 5596.0,
+    "source_url": "https://exoplanetarchive.ipac.caltech.edu/overview/Kepler-22",
+    "retrieved_date": "2026-09-26",
+    "notes": "Mass omitted because the displayed solution is an upper limit; V1 avoids treating a limit as an exact value."
+  },
+  {
+    "planet_name": "HD 209458 b",
+    "host_name": "HD 209458",
+    "equilibrium_temperature_k": 1450.0,
+    "planet_radius_earth": 15.58,
+    "planet_mass_earth": 232.0,
+    "orbital_period_days": 3.52474859,
+    "stellar_temperature_k": 6117.0,
+    "source_url": "https://exoplanetarchive.ipac.caltech.edu/overview/HD_209458",
+    "retrieved_date": "2026-09-26",
+    "notes": "Representative values selected from NASA Exoplanet Archive overview; multiple literature solutions are displayed by the archive."
+  }
+]
