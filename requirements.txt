@@ -1,1 +1,3 @@
-# V1 uses only the Python standard library. No pip packages required.
+# Core desktop project uses the Python standard library.
+# Streamlit is required only for the optional Python web frontend.
+streamlit>=1.38,<2

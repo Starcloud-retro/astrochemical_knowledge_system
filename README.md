@@ -104,3 +104,24 @@ Future work can add richer astrochemical ontologies, literature-backed reaction 
 ## Public web demo
 
 A static browser demo is included under `web/` for Vercel. The primary PBL implementation remains the Python/Tkinter desktop application. Set Vercel Root Directory to `web` and Framework Preset to `Other`.
+
+## Optional Streamlit frontend
+
+A Python web interface is included as `streamlit_app.py`.
+
+It reuses the same JSON knowledge base, NASA snapshot and forward-chaining engine used by the desktop application.
+
+Run it with:
+
+```bash
+python -m pip install -r requirements.txt
+streamlit run streamlit_app.py
+```
+
+The Streamlit version has the same three conceptual sections as the verified web demo:
+
+- Manual Astrochemistry
+- NASA Exoplanet Data
+- Method & Scope
+
+The Tkinter + ttk application remains the primary desktop implementation.
